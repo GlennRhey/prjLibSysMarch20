@@ -10,7 +10,7 @@
     ///     litSidebar.Text = SidebarHelper.GetSidebar(Session["Role"]?.ToString(), "books");
     ///
     /// activePage values:
-    ///     "dashboard" | "books" | "members" | "borrow" | "reports" | "auditlogs"
+    ///     "dashboard" | "books" | "members" | "borrow" | "reports" | "auditlogs" | "settings"
     /// </summary>
     public static class SidebarHelper
     {
@@ -19,7 +19,7 @@
             bool isSA = (role == "Super Admin");
 
             string bg = isSA ? "linear-gradient(135deg,#1a237e 0%,#283593 100%)"
-                                 : "linear-gradient(135deg,#8b0000 0%,#b11226 100%)";
+                             : "linear-gradient(135deg,#8b0000 0%,#b11226 100%)";
             string accent = isSA ? "#ffd54f" : "white";
 
             string title = isSA
@@ -55,6 +55,7 @@
       {NavItem("fas fa-hand-holding", "Borrow Transaction", "borrowtransac.aspx", activePage == "borrow", accent)}
       {NavItem("fas fa-chart-bar", "Reports", "reports.aspx", activePage == "reports", accent)}
       {auditItem}
+      {(!isSA ? NavItem("fas fa-cogs", "Settings", "Settings.aspx", activePage == "settings", accent) : "")}
       {NavItem("fas fa-sign-out-alt", "Logout", "Logout.aspx", false, accent)}
     </ul>
   </div>
